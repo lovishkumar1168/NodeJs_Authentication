@@ -57,12 +57,12 @@ export class UserController{
             const user = await this.userRepository.findUserByEmail(email);
             if(!user)
             {
-               return res.render("signin",{error : "email not registered",message : null});
+               return res.render("signIn",{error : "email not registered",message : null});
             }
             const match = await user.comparePassword(password);
             if(!match)
             {
-               return res.render("signin",{error : "invalid credentials",message : null});
+               return res.render("signIn",{error : "invalid credentials",message : null});
             }
             req.session.user = {name : user.name, email, password}
             req.flash("success","signin successfully");
