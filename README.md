@@ -20,3 +20,4 @@ note : - I am not including .env file so make sure you create your own .env file
 8. CALLBACK_URL
 9. CLIENT_ID
 10. CLIENT_SECRET
+11. RECAPTCHA_KEY
