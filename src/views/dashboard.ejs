@@ -1,0 +1,37 @@
+<% if (messages.success) { %>
+  <div class="alert alert-success text-center mt-4" id="alertMessage" role="alert">
+      <%= messages.success %>
+  </div>
+<% } %>
+<div class="row">
+    <div class="col-md-6 offset-md-3 welcome-container my-5">
+      <div class="card bg-primary" style="height : 500px">
+        <div class="card-body">
+          <h1 class="card-title text-white">Hey <%= user.name %>, Welcome to our site</h1>
+          <div class="card-text text-white mt-5 text-center">
+              <h5 class="mb-4">Your info</h5>
+              <p>Email : <%= user.email %></p>
+              <% if(user.password) {%>
+                <p>Password : <%= '*'.repeat(user.password.length) %></p>
+              <% } %>
+          </div>
+        </div>
+        <% if(user.password) {%>
+          <div class="text-center">
+              <a href="/resetPassword" class="btn btn-danger">Reset Password</a>
+          </div>
+        <% } %>
+      </div>
+    </div>
+</div>
+
+
+<script>
+  // Get the alert message element
+  const alertMessage = document.getElementById('alertMessage');
+
+  // Function to hide the alert message after 2 seconds
+  setTimeout(() => {
+      alertMessage.style.display = 'none';
+  }, 2000);
+</script>

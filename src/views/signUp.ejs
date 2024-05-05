@@ -1,0 +1,64 @@
+<% if(message) { %>
+    <div class="alert alert-danger text-center mt-4" id="alertMessage" role="alert">
+        <%= message %>
+    </div>
+<% } %>
+<div class="d-flex justify-content-center">
+    <div class="card w-50 mt-5" style="background-color: lightgray;">
+        <div class="card-body">
+            <form action="/" method="post" onsubmit="var response = grecaptcha.getResponse(); if (response.length == 0) { alert('Please complete the reCAPTCHA verification.'); return false; }">
+                <div class="my-5 text-center">
+                    <h4>Join Us and Create Your Account Today!</h4>
+                </div>
+                <div class="form-group my-4 d-flex justify-content-center">
+                    <div class="input-group w-50">
+                        <input type="text" class="form-control border border-1 border-dark py-2" name="name" placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="form-group my-4 d-flex justify-content-center">
+                    <div class="input-group w-50">
+                        <input type="email" class="form-control border border-1 border-dark py-2" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group my-4 d-flex justify-content-center">
+                    <div class="input-group w-50">
+                        <input type="password" class="form-control border border-1 border-dark" name ="password" placeholder="Password" required>
+                    </div>
+                </div>
+                <div >
+                <div class="form-group mt-4 d-flex justify-content-center">
+                    <div class="input-group w-50" style="font-size : 14px; text-align:center;opacity: 0.8;">
+                        <p>By signing up, you agree to our <span class="text-primary">Terms , Privacy Policy</span> and <span class="text-primary">Cookies Policy .</span></p>
+                    </div>
+                </div>
+                <div class="form-group my-4 d-flex justify-content-center">
+                    <div class="input-group w-50" style="font-size: 14px; text-align: center; opacity: 0.8;">
+                        <!-- Add reCAPTCHA widget here -->
+                        <div class="g-recaptcha" data-sitekey="6LfMAdEpAAAAABsnXnfjRi4i8Zfwz3TizsguWBiG"></div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-20">Sign Up</button>
+                </div>
+                <div class="text-center my-4">
+                    <a href="/auth" class="p-2 border border-2 border-dark" style="text-decoration: none;">Register with Google</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="text-center my-4">
+        Have an account? <strong><a href="/signin" class="text-primary" style="text-decoration : none"> Sign in</a></strong>
+    </div>
+    
+</div>
+
+<script>
+    // Get the alert message element
+    const alertMessage = document.getElementById('alertMessage');
+
+    // Function to hide the alert message after 2 seconds
+    setTimeout(() => {
+        alertMessage.style.display = 'none';
+    }, 2000);
+</script>

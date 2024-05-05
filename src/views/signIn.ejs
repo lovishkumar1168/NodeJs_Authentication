@@ -1,0 +1,62 @@
+<% if(error) { %>
+    <div class="alert alert-danger text-center mt-4" id="alertMessage" role="alert">
+        <%= error %>
+    </div>
+<% } %>
+<% if ( message && message.success) { %>
+    <div class="alert alert-success text-center mt-4" id="alertMessage" role="alert">
+        <%= message.success %>
+    </div>
+  <% } %>
+<div class="d-flex justify-content-center">
+    <div class="card w-50 mt-5" style="background-color: lightgray;">
+        <div class="card-body">
+            <form action="/signin" method="post" onsubmit="var response = grecaptcha.getResponse(); if (response.length == 0) { alert('Please complete the reCAPTCHA verification.'); return false; }">
+                <div class="my-5 text-center">
+                    <h4>Welcome! Sign in to Get Started</h4>
+                </div>
+                <div class="form-group my-4 d-flex justify-content-center">
+                    <div class="input-group w-50">
+                        <input type="email" class="form-control border border-1 border-dark py-2" name="email" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-group my-4 d-flex justify-content-center">
+                    <div class="input-group w-50">
+                        <input type="password" class="form-control border border-1 border-dark" name ="password" placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="form-group my-4 d-flex justify-content-center">
+                    <div class="input-group w-50" style="font-size: 14px; text-align: center; opacity: 0.8;">
+                        <!-- Add reCAPTCHA widget here -->
+                        <div class="g-recaptcha" data-sitekey="6LfMAdEpAAAAABsnXnfjRi4i8Zfwz3TizsguWBiG"></div>
+                    </div>
+                </div>
+                <div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary w-20">Sign In</button>
+                </div>
+                <div class="text-center my-4">
+                    <a href="/auth" class="p-2 border border-2 border-dark" style="text-decoration: none;">Login with Google</a>
+                </div>
+                <div class="text-center my-2">
+                    <a href="/forgot-password" class="text-primary" style="text-decoration : none">forgot password ?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="text-center my-4">
+        <strong><a href="/" class="text-primary" style="text-decoration : none">Create new account</a></strong>
+    </div>
+    
+</div>
+
+<script>
+    // Get the alert message element
+    const alertMessage = document.getElementById('alertMessage');
+
+    // Function to hide the alert message after 2 seconds
+    setTimeout(() => {
+        alertMessage.style.display = 'none';
+    }, 2000);
+</script>
